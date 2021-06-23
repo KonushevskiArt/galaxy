@@ -4,9 +4,11 @@ const showModal = (containerEl, modalSelector) => {
   modal.classList.add('active');
 }
 
-const Menu = (startGame) => {
+const Menu = (startGame, bg) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('menu')
+  wrapper.style.backgroundImage = `url(${bg.src})`;
+  console.dir(bg);
   wrapper.innerHTML = `
   <h1 class="title">Galaxy</h1>
   <ul class="list">

@@ -22,7 +22,8 @@ class Astero extends classSpaceElem {
              key === 'astero4'||
              key === 'astero5'||
              key === 'astero6'||
-             key === 'satelite'
+             key === 'satelite' ||
+             key === 'satelite2'
     }).map(value => value[1]);
 
     this.img = this.imgs[Math.floor(Math.random() * 7)];
