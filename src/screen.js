@@ -21,6 +21,7 @@ class Screen {
   
   fixMouseClick = () => {
     this.isClick = true;
+    
   } 
 
   changeMousePosition = (e) => {
@@ -32,10 +33,10 @@ class Screen {
     this.context.drawImage(image, x, y, width, height);
   }
   
-  // print(x, y, text) {
-  //   this.context.fillStyle = '#ffffff';
-  //   this.context.font = '22px Georgia';
-  //   this.context.fillText(text, x, y);
-  // }
+  print(x, y, text) {
+    this.context.fillStyle = '#ffffff';
+    this.context.font = '22px Georgia';
+    this.context.fillText(text, x, y);
+  }
 }
 export {Screen};

@@ -1,4 +1,4 @@
-import { Astero } from '../components/Astero/Astero';
+import { Astero } from '../components/Astero/Astero.js';
 
 const changesAstero = (data, imgs, screen) => {
   const {height, width} = screen;
@@ -24,8 +24,6 @@ const changesAstero = (data, imgs, screen) => {
     
   }
 
-
-  
 }
 
 export {changesAstero};

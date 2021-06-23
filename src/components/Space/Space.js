@@ -1,6 +1,6 @@
-import {spaceElem} from '../spaceElem/spaceElem.js';
+import {classSpaceElem} from '../classSpaceElem/classSpaceElem.js';
 
-class Space extends spaceElem{
+class Space extends classSpaceElem{
   constructor(imgs, width, height) {
     super(imgs, width, height);
     this.img = imgs.space;
