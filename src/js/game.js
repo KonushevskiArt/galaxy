@@ -1,6 +1,5 @@
 import {Screen} from './screen';
 import {DataGame} from './data-game';
-import {imageLoader} from './utils/image-loader';
 import {changes} from './changes/changes';
 import {Menu} from './pages/Menu.js';
 import {Canvas} from './pages/Canvas.js';
@@ -13,7 +12,7 @@ class Game {
     this.container = document.querySelector(selector);
     this.data = null;
     this.screen = null;
-
+    this.data = new DataGame();
   };
   gameLoop = () => {
     if (this.data.isGameOver) {
@@ -38,24 +37,20 @@ class Game {
   }
   showMenu = () => {
     this.container.innerHTML = '';
-    this.container.appendChild(Menu(this.loading));
+    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu));
   }
   loading = () => {
     this.container.innerHTML = '';
-    this.container.appendChild(Loading());
+    this.container.appendChild(Loading(this.loadedImgs.loading));
     setTimeout(() => {
-      this.data = new DataGame();
-      imageLoader(this.data.images).then((data) => {
-        this.loadedImgs = data;
-        this.startGame();
-      })
+      this.startGame();
     }, 2000);
   }
   gameOver = () => {
     cancelAnimationFrame(this.reqAnim);
     clearInterval(this.gameTimeId);
     this.container.innerHTML = '';
-    this.container.appendChild(GameOver(this.data, this.restartGame));
+    this.container.appendChild(GameOver(this.data, this.restartGame, this.loadedImgs.gameover));
   }
   restartGame = () => {
     this.showMenu();

@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow:  hidden;
+}
+
+.app {
+  position: relative;
+}
+
+.game {
+  cursor: none;
+  
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: royalblue;
+  background-size: cover;
+  background-position: center;
+  color: rgb(212, 223, 224);
+}
+.menu h1 {
+  margin-bottom: 30px;
+}
+.title {
+  font-size: 70px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list button, .gameover button , .start {
+  color: rgb(212, 223, 224);
+  font-size: 24px;
+  background-color: transparent;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: none;
+  transition: color 0.3s;
+}
+
+.list button:hover, .gameover button:hover, .start:hover {
+  color: brown;
+}
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: royalblue;
+  background-size: cover;
+  background-position: center;
+}
+.loading-title {
+  font-size: 30px;
+  color: rgb(223, 149, 165);
+}
+
+.gameover {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: royalblue;
+  background-size: cover;
+  background-position: center;
+  color: azure;
+}
+
+.score {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+
+@keyframes ldio-kp31otrzcd7 {
+  0% { transform: rotate(0deg) }
+  50% { transform: rotate(180deg) }
+  100% { transform: rotate(360deg) }
+}
+.ldio-kp31otrzcd7 div {
+  position: absolute;
+  animation: ldio-kp31otrzcd7 1s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 0 #e15b64;
+  transform-origin: 80px 82px;
+}
+.loadingio-spinner-eclipse-zkgdh328mvk {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+}
+.ldio-kp31otrzcd7 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-kp31otrzcd7 div { box-sizing: content-box; }
+     
+
+.description {
+  padding: 30px;
+  width: 60%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5vh;
+  left: 20%;
+  background: rgba(70, 130, 180, 0.85);
+  color: rgb(222, 218, 255);
+  border-radius: 10px;
+  animation-duration: .3s;
+  
+}
+.description.active {
+  display: flex;
+  animation-name: fadeIn;
+}
+.description-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.description-list {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+.description h4 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.description li {
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

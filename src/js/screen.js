@@ -21,7 +21,6 @@ class Screen {
   
   fixMouseClick = () => {
     this.isClick = true;
-    
   } 
 
   changeMousePosition = (e) => {
