@@ -4,10 +4,16 @@ const showModal = (containerEl, modalSelector) => {
   modal.classList.add('active');
 }
 
-const Menu = (startGame, bg) => {
+const Menu = (startGame, bg, menuAudio) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('menu')
   wrapper.style.backgroundImage = `url(${bg.src})`;
+
+  const audio = document.createElement('audio');
+  audio.loop = true;
+  audio.src = menuAudio.src;
+  audio.autoplay = true;
+
   wrapper.innerHTML = `
   <h1 class="title">Galaxy</h1>
   <ul class="list">
@@ -32,7 +38,10 @@ const Menu = (startGame, bg) => {
       </ul>
       <button class="start">Start game</button>
     </div>
+
   `
+  wrapper.appendChild(audio);
+  
   wrapper.querySelector('.trigger-modal').onclick = () => showModal(wrapper, '.description');
   wrapper.querySelector('.start').onclick = startGame;
   return wrapper;

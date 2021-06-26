@@ -13,7 +13,7 @@ class classShip extends classSpaceElem{
       this.isAutopilot = false}).bind(this), 5000); 
   } 
   
-  checkHit = (pests, data, screen) => {
+  checkHit = (pests, data) => {
      
     const indexHitPest = pests.findIndex((el) => {
       return ((this.x <= (el.x + el.width) && this.x >= el.x) ||
@@ -26,6 +26,13 @@ class classShip extends classSpaceElem{
       data.explodedAsters.push(data.asteros[indexHitPest]);
  
       pests.splice(indexHitPest, 1);
+
+
+      if (data.audioExplode.paused) {
+        data.audioExplode.play();
+      } else {
+        data.audioExplode.currentTime = 0;
+      }
 
       if (!isRestHelth) {
         this.y += 20;

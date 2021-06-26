@@ -13,11 +13,24 @@ const checkHit = (fireball, data, screen) => {
     aster.speedRotate = aster.speedRotate > 0 ?
     aster.speedRotate - 0.2 : aster.speedRotate + 0.2;
     data.hitedAsters.push(aster);
+
+    if (data.audioHit.paused) {
+      data.audioHit.play();
+    } else {
+      data.audioHit.currentTime = 0;
+    }    
+
     const isRestHelth = aster.reduceHelth(data.fireballs[indexFireball]);
     if (isRestHelth) {
       data.score +=  aster.height;
 
-      data.explodedAsters.push(data.asteros[indexHitAster]);
+      if (data.audioExplode.paused) {
+        data.audioExplode.play();
+      } else {
+        data.audioExplode.currentTime = 0;
+      }
+
+        data.explodedAsters.push(data.asteros[indexHitAster]);
 
       data.asteros.splice(indexHitAster, 1);
     }
@@ -30,6 +43,12 @@ const changesFireball = (data, imgs, screen) => {
   if (screen.isClick && data.ship.ammo > 0) {
     const fireBall = new Fireball(imgs, data.ship.x + (data.ship.width / 2.2), data.ship.y);
     data.ship.ammo -= 1;
+
+    if (data.audioBlaster.paused) {
+      data.audioBlaster.play();
+    } else {
+      data.audioBlaster.currentTime = 0;
+    }
     
     data.fireballs.push(fireBall);
     

@@ -91,7 +91,7 @@ module.exports = {
         use: jsLoaders(),
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg|mp3)$/i,
         loader: 'file-loader',
         options: {
           outputPath: 'images',

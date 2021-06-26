@@ -9,6 +9,7 @@ import {GameOver} from './pages/GameOver.js';
 class Game {
   constructor(selector) {
     this.loadedImgs;
+    this.loadedAudio;
     this.container = document.querySelector(selector);
     this.data = null;
     this.screen = null;
@@ -25,20 +26,19 @@ class Game {
   
   startGame = () => {
     this.container.innerHTML = '';
-    this.container.appendChild(Canvas());
+    this.container.appendChild(Canvas(this.loadedAudio, this.data));
     this.screen = new Screen();
     
     this.gameTimeId = setInterval(() => {
       this.data.gameTime += 1;
-      this.data.score += 50;
-      this.data.currnetCountAsteros += 0.1;
+      this.data.currnetCountAsteros += 0.02;
       }, 1000)
     requestAnimationFrame(this.gameLoop);
   }
   showMenu = () => {
     this.data = new DataGame();
     this.container.innerHTML = '';
-    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu));
+    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu, this.loadedAudio.menu));
   }
   loading = () => {
     this.container.innerHTML = '';
@@ -51,7 +51,7 @@ class Game {
     cancelAnimationFrame(this.reqAnim);
     clearInterval(this.gameTimeId);
     this.container.innerHTML = '';
-    this.container.appendChild(GameOver(this.data, this.restartGame, this.loadedImgs.gameover));
+    this.container.appendChild(GameOver(this.data, this.restartGame, this.loadedImgs.gameover, this.loadedAudio.gameover));
   }
   restartGame = () => {
     this.showMenu();
