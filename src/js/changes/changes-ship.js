@@ -31,6 +31,8 @@ const changesShip = (data, imgs, screen) => {
     data.bigShip.render(screen);
     data.ship.render(screen);
 
+    data.audioShipSound.play();
+
     shotAnima(data, screen);
   } 
 

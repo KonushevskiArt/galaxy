@@ -16,7 +16,7 @@ import fireball from '../../img/fireball.svg';
 import fireMin from '../../img/fire.png';
 import shot from '../../img/shot.png';
 import explode from '../../img/explode.png';
-import astero8 from '../../img/astero8.gif';
+import astero8 from '../../img/astero8.png';
 import hit from '../../img/hit.png';
 
 const images = {

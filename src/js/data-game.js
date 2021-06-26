@@ -31,6 +31,11 @@ class DataGame{
 
     this.currnetCountAsteros = 3;
     this.timeAppearAsteros = 3;
+
+    this.audioHit;
+    this.audioExplode;
+    this.audioBlaster;
+    this.audioShipSound;
   }
 }
 
