@@ -1,7 +1,7 @@
 import {classSpaceElem} from '../classSpaceElem/classSpaceElem.js';
 
 class classShip extends classSpaceElem{
-  constructor(){
+  constructor() {
     super();
   }
 
@@ -13,18 +13,21 @@ class classShip extends classSpaceElem{
       this.isAutopilot = false}).bind(this), 5000); 
   } 
   
-  checkHit = (pests, data) => {
+  checkHit = (pests, data, screen) => {
      
     const indexHitPest = pests.findIndex((el) => {
       return ((this.x <= (el.x + el.width) && this.x >= el.x) ||
       (el.x <= (this.x + this.width) && el.x >= this.x)) &&
-              (this.y +10 <= (el.y + el.height) && this.y +10 >= el.y);
+              ((this.y +10 <= (el.y + el.height) && this.y +10 >= el.y) ||
+              (el.y +10 <= (this.y + this.height) && el.y +10 >= this.y));
     });
     if (indexHitPest !== -1) {
       const isRestHelth = this.reduceHelth(pests[indexHitPest]);
+      data.explodedAsters.push(data.asteros[indexHitPest]);
+ 
       pests.splice(indexHitPest, 1);
+
       if (!isRestHelth) {
-        //make animation of hit ship
         this.y += 20;
       } else {
         data.isGameOver = true;

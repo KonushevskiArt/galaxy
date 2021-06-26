@@ -13,6 +13,11 @@ import bigspaceship from '../../img/bigspaceship.png';
 import satelite from '../../img/satelite.png';
 import satelite2 from '../../img/satelite2.png';
 import fireball from '../../img/fireball.svg';
+import fireMin from '../../img/fire.png';
+import shot from '../../img/shot.png';
+import explode from '../../img/explode.png';
+import astero8 from '../../img/astero8.gif';
+import hit from '../../img/hit.png';
 
 const images = {
   astero,
@@ -29,7 +34,12 @@ const images = {
   space,
   mainmenu,
   loading,
-  gameover
+  gameover,
+  fireMin,
+  shot,
+  explode,
+  astero8,
+  hit
 };
 
 const imageLoader = async () => {

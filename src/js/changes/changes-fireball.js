@@ -1,7 +1,6 @@
 import { Fireball } from '../components/Fireball/Fireball.js';
 
-
-const checkHit = (fireball, data) => {
+const checkHit = (fireball, data, screen) => {
     
   const indexHitAster = data.asteros.findIndex((aster) => {
     return (fireball.x <= (aster.x + aster.width) && fireball.x >= aster.x) &&
@@ -12,23 +11,22 @@ const checkHit = (fireball, data) => {
     const aster = data.asteros[indexHitAster];
     aster.speedY -= 0.2;
     aster.speedRotate = aster.speedRotate > 0 ?
-     aster.speedRotate - 0.2 : aster.speedRotate + 0.2;
-    const isrRestHelth = aster.reduceHelth(data.fireballs[indexFireball]);
-    if (isrRestHelth) {
+    aster.speedRotate - 0.2 : aster.speedRotate + 0.2;
+    data.hitedAsters.push(aster);
+    const isRestHelth = aster.reduceHelth(data.fireballs[indexFireball]);
+    if (isRestHelth) {
       data.score +=  aster.height;
+
+      data.explodedAsters.push(data.asteros[indexHitAster]);
+
       data.asteros.splice(indexHitAster, 1);
     }
     data.fireballs.splice(indexFireball, 1);
   }
 }
 
-
 const changesFireball = (data, imgs, screen) => {
-    
-
-  const {height, width} = screen;
-  const lastShot = data.timeLastShot ? data.timeLastShot - new Date().getTime() - 2 : true;
-
+  
   if (screen.isClick && data.ship.ammo > 0) {
     const fireBall = new Fireball(imgs, data.ship.x + (data.ship.width / 2.2), data.ship.y);
     data.ship.ammo -= 1;
@@ -48,10 +46,10 @@ const changesFireball = (data, imgs, screen) => {
     data.fireballs.forEach((fireball) => {
       fireball.y -= fireball.speedY;
       
-      checkHit(fireball, data);
+      checkHit(fireball, data, screen);
 
       if (fireball.isItemOnScreen(screen)) {
-        fireball.render(screen)
+        fireball.render(screen);
       } else {
         const index = data.fireballs.findIndex((el) => el === fireball);
         data.fireballs.splice(index, 1);

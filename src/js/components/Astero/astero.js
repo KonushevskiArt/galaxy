@@ -23,13 +23,16 @@ class Astero extends classSpaceElem {
              key === 'astero5'||
              key === 'astero6'||
              key === 'satelite' ||
-             key === 'satelite2'
+             key === 'satelite2' ||
+             key === 'astero8'
     }).map(value => value[1]);
 
-    this.img = this.imgs[Math.floor(Math.random() * 7)];
-    this.rotate = true;    
+    this.img = this.imgs[Math.floor(Math.random() * 9)];
+    this.imgExplode = imgs.explode;
+    this.imgHit = imgs.hit;
+    this.isRotate = true;   
     this.power =  Math.floor(this.speedY * this.height / 4);
-    this.degree =   Math.floor(Math.random() * 100);
+    this.angle =   Math.floor(Math.random() * 100);
     this.speedRotate = this._sign === '+' ? Math.floor(Math.random() * 100) / 50 : -(Math.floor(Math.random() * 100) / 50);
   }
 }

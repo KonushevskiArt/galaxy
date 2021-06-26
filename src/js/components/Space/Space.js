@@ -8,7 +8,7 @@ class Space extends classSpaceElem{
     this.width = width;
     this.x = 0;
     this.y = 0
-    this.rotate = false;
+    this.isRotate = false;
   }
   
   

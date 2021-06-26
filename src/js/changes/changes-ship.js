@@ -1,6 +1,6 @@
 import { Ship } from '../components/Ship/Ship.js';
 import { BigShip } from '../components/Big-ship/BigShip.js';
-
+import { shotAnima } from "../animation/shot/shot.js";
 
 const changesShip = (data, imgs, screen) => {
   const {height, width} = screen;
@@ -15,18 +15,23 @@ const changesShip = (data, imgs, screen) => {
     ship.render(screen);
     bigShip.render(screen);
   } else {
+    
     if (data.bigShip.isAutopilot === false) {
       data.bigShip.autopilot(screen);
     }
     data.bigShip.moveShip(data.bigShip.targetX, data.bigShip.targetY);
     data.ship.moveShip(screen.mouseX, screen.mouseY);
-    data.ship.checkHit(data.asteros, data);
+
+    data.ship.checkHit(data.asteros, data, screen);
+    data.bigShip.checkHit(data.asteros, data, screen);
     data.ship.checkRepeir(data);
-    data.bigShip.checkHit(data.asteros, data);
+
     screen.print(20, 55, `helth Ship  ${data.ship.helth}`);
     screen.print(20, 30, `helth Main Ship  ${data.bigShip.helth}`);
     data.bigShip.render(screen);
     data.ship.render(screen);
+
+    shotAnima(data, screen);
   } 
 
 }

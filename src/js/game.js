@@ -12,7 +12,7 @@ class Game {
     this.container = document.querySelector(selector);
     this.data = null;
     this.screen = null;
-    this.data = new DataGame();
+ 
   };
   gameLoop = () => {
     if (this.data.isGameOver) {
@@ -36,6 +36,7 @@ class Game {
     requestAnimationFrame(this.gameLoop);
   }
   showMenu = () => {
+    this.data = new DataGame();
     this.container.innerHTML = '';
     this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu));
   }
