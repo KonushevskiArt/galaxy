@@ -9,7 +9,10 @@ class Ship extends classShip{
     this.height = this.width = 50;
     this.helth = 100;
     this.img = imgs.spaceship;
-    this.rotate = false;
+    this.imgFire = imgs.fireMin;
+    this.imgShot = imgs.shot;
+    this.isFire = true;
+    this.isRotate = false;
     this.power = this.height / 5;
     this.ammo = 100;
     this.isRepeir = false;

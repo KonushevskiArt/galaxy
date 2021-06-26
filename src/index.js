@@ -5,7 +5,7 @@ import {Game} from './js/game';
 
 const game = new Game('.app');
 
-imageLoader(game.data.images).then((data) => {
+imageLoader().then((data) => {
   game.loadedImgs = data;
   game.showMenu();
 })

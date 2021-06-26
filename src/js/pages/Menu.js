@@ -8,12 +8,11 @@ const Menu = (startGame, bg) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('menu')
   wrapper.style.backgroundImage = `url(${bg.src})`;
-  console.dir(bg);
   wrapper.innerHTML = `
   <h1 class="title">Galaxy</h1>
   <ul class="list">
     <li> <button class="trigger-modal">Start game</button> </li>
-    <li> <button>Show best result</button></li>
+
   </ul>
   <div class="description">
       <h3 class="description-title">Game description</h3>

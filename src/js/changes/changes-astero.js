@@ -1,4 +1,7 @@
 import { Astero } from '../components/Astero/Astero.js';
+import { explodeAnim} from '../animation/explode/explode.js';
+import { hitAnim } from '../animation/hit/hit.js';
+
 
 const changesAstero = (data, imgs, screen) => {
   const {height, width} = screen;
@@ -15,6 +18,8 @@ const changesAstero = (data, imgs, screen) => {
 
       if (aster.isItemOnScreen(screen)) {
         aster.render(screen);
+        explodeAnim(data, screen);
+        hitAnim(data, screen);
       } else {
         const index = data.asteros.findIndex((astero) => aster === astero);
         data.asteros.splice(index, 1);

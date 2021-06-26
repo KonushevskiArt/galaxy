@@ -7,11 +7,11 @@ class Fireball extends classSpaceElem{
     this.id = id += 1;
     this.img = imgs.fireball;
     this.height = this.width = this.power = 10;
-    this.speedY = 15;
+    this.speedY = 25;
     this.x = x;
     this.y = y;
     this.dataCreated = new Date().getTime();
-    this.rotate = false;
+    this.isRotate = false;
   }
   
   
