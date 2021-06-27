@@ -20,7 +20,6 @@ const jsLoaders = () => {
     },
 
   ];
-
   
   return loaders;
 };
@@ -50,7 +49,6 @@ const plugins = [
 if (isDev) {
   plugins.push(new webpack.HotModuleReplacementPlugin());
 }
-
 
 module.exports = {
   target: process.env.NODE_ENV === 'development' ? 'web' : 'browserslist',
@@ -91,10 +89,17 @@ module.exports = {
         use: jsLoaders(),
       },
       {
-        test: /\.(png|jpe?g|gif|svg|mp3)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         loader: 'file-loader',
         options: {
           outputPath: 'images',
+        },
+      },
+      {
+        test: /\.mp3$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'audio',
         },
       },
     ],

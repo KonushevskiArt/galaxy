@@ -9,9 +9,9 @@ const GameOver = (data, restart, bg, audioGameOver) => {
   audio.autoplay = true;
 
   wrapper.innerHTML = `
-  <h3 class="title">Game over</h3>
-  <span class="score">Your scrore: ${data.score}</span>
-  <button class="restart">restart</button>
+    <h3 class="title">Game over</h3>
+    <span class="score">Your scrore: ${data.score}</span>
+    <button class="restart">restart</button>
   `
   wrapper.querySelector('.restart').onclick = restart;
   wrapper.appendChild(audio)

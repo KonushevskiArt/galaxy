@@ -38,9 +38,10 @@ class Game {
   showMenu = () => {
     this.data = new DataGame();
     this.container.innerHTML = '';
-    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu, this.loadedAudio.menu));
+    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu, this.loadedAudio.menu, this.data));
   }
   loading = () => {
+
     this.container.innerHTML = '';
     this.container.appendChild(Loading(this.loadedImgs.loading));
     setTimeout(() => {
