@@ -1,6 +1,6 @@
 import { Fireball } from '../components/Fireball/Fireball.js';
 
-const checkHit = (fireball, data, screen) => {
+const checkHit = (fireball, data) => {
     
   const indexHitAster = data.asteros.findIndex((aster) => {
     return (fireball.x <= (aster.x + aster.width) && fireball.x >= aster.x) &&
@@ -9,9 +9,9 @@ const checkHit = (fireball, data, screen) => {
   if (indexHitAster !== -1) {
     const indexFireball = data.fireballs.findIndex((el) => el.id === fireball.id );
     const aster = data.asteros[indexHitAster];
-    aster.speedY -= 0.2;
+    aster.speedY -= Math.abs(3 - (aster.height / 20));
     aster.speedRotate = aster.speedRotate > 0 ?
-    aster.speedRotate - 0.2 : aster.speedRotate + 0.2;
+      aster.speedRotate - 0.2 : aster.speedRotate + 0.2;
     data.hitedAsters.push(aster);
 
     if (data.audioHit.paused) {
