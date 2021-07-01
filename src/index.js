@@ -1,9 +1,19 @@
 import { imageLoader } from './js/utils/image-loader';
 import { audioLoader } from './js/utils/audio-loader';
-console.log('asd')
+
 import './scss/index.scss';
 
 import {Game} from './js/game';
+
+window.addEventListener('load', async () => {
+  try {
+    if (navigator.serviceWorker) {
+      await navigator.serviceWorker.register('./sw.js');
+    }
+  } catch (error) {
+    console.log('Service worker register fail');
+  }
+});
 
 const game = new Game('.app');
 
