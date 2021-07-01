@@ -8,7 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 const isDev = !isProd;
 
-const filename = (ext) => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
+// const filename = (ext) => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
+const filename = (ext) => isDev ? `bundle.${ext}` : `bundle.${ext}`;
 
 const jsLoaders = () => {
   const loaders = [
@@ -38,6 +39,18 @@ const plugins = [
       {
         from: path.resolve(__dirname, 'src/favicon.ico'),
         to: path.resolve(__dirname, 'dist'),
+      },
+      {
+        from: path.resolve(__dirname, 'src/manifest.json'),
+        to: path.resolve(__dirname, 'dist'),
+      },
+      {
+        from: path.resolve(__dirname, 'src/sw.js'),
+        to: path.resolve(__dirname, 'dist'),
+      },
+      {
+        from: path.resolve(__dirname, 'src/icons'),
+        to: path.resolve(__dirname, 'dist/icons'),
       },
     ],
   }),
@@ -93,6 +106,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'images',
+          name: '[name].[ext]',
         },
       },
       {
@@ -100,6 +114,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           outputPath: 'audio',
+          name: '[name].[ext]',
         },
       },
     ],
