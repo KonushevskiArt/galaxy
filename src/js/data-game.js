@@ -2,7 +2,10 @@ class DataGame{
   constructor() {
     
     this.asteros = [];
+    this.stars = [];
+    this.planets = [];
     this.fireballs = [];
+    this.enemyShip = null;
     this.space = null;
     this.ship = null;
     this.bigShip = null;

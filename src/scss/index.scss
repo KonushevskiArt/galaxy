@@ -37,6 +37,7 @@ body {
 
 .list {
   list-style-type: none;
+  text-align: center;
 }
 
 .list button, .gameover button , .start {
@@ -119,45 +120,89 @@ body {
 .ldio-kp31otrzcd7 div { box-sizing: content-box; }
      
 
-.description {
+.modal {
   overflow: auto;
   padding: 30px;
-  height: 80%;
   width: 80%;
   display: none;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 5vh;
+  top: 20vh;
   left: 10%;
+  right: 10%;
   background: rgba(70, 130, 180, 0.85);
   color: rgb(222, 218, 255);
   border-radius: 10px;
   animation-duration: .3s;
   
 }
-.description.active {
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 35px;
+  line-height: 35px;
+  width: 35px;
+  background: transparent;
+  border: none;
+  color: rgb(222, 218, 255);
+  transition: color .3s;
+  cursor: pointer;
+  &:hover {
+    color:rgb(243, 135, 135)
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal.active {
   display: flex;
   animation-name: fadeIn;
 }
-.description-title {
+.modal-title {
   font-size: 30px;
   margin-bottom: 20px;
 }
-.description-list {
+.modal-list {
   list-style-type: none;
   margin-bottom: 30px;
 }
-.description h4 {
+.modal h4 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 22px;
 }
 
-.description li {
+.modal li {
   margin-bottom: 14px;
   font-size: 18px;
+}
+.label {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.name {
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.error {
+  border: rgb(243, 135, 135) 2px solid;
+}
+.error-message {
+  display: none;
+  color: rgb(243, 135, 135);
+  font-size: 20px;
+  margin-bottom: 10px;
+  &.active {
+    display: block;
+  }
 }
 
 @keyframes fadeIn {

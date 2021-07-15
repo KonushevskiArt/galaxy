@@ -8,7 +8,7 @@ const changesSpace = (data, imgs, screen) => {
     const space = new Space(imgs, width, height);
     data.space = space;
     data.space.render(screen);
-
+    
   } else {
     data.space.render(screen);
   }
