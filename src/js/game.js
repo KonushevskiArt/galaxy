@@ -5,6 +5,7 @@ import {Menu} from './pages/Menu.js';
 import {Canvas} from './pages/Canvas.js';
 import {Loading} from './pages/Loading.js';
 import {GameOver} from './pages/GameOver.js';
+import {getListBestPilots, postScore} from './utils/service.js';
 
 class Game {
   constructor(selector) {
@@ -37,11 +38,15 @@ class Game {
   }
   showMenu = () => {
     this.data = new DataGame();
-    this.container.innerHTML = '';
-    this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu, this.loadedAudio.menu, this.data));
+    getListBestPilots()
+    .then((listBestPlayers) => {
+      this.data.ListBestPilots = listBestPlayers;
+      this.container.innerHTML = '';
+      this.container.appendChild(Menu(this.loading, this.loadedImgs.mainmenu, this.loadedAudio.menu, this.data));
+    })
   }
-  loading = () => {
-
+  loading = (name) => {
+    this.data.name = name;
     this.container.innerHTML = '';
     this.container.appendChild(Loading(this.loadedImgs.loading));
     setTimeout(() => {
@@ -52,6 +57,11 @@ class Game {
     cancelAnimationFrame(this.reqAnim);
     clearInterval(this.gameTimeId);
     this.container.innerHTML = '';
+    const playerScore = {
+      name: this.data.name,
+      score: this.data.score 
+    }
+    postScore(playerScore);
     this.container.appendChild(GameOver(this.data, this.restartGame, this.loadedImgs.gameover, this.loadedAudio.gameover));
   }
   restartGame = () => {

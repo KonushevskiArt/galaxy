@@ -16,7 +16,7 @@ const changesShip = (data, imgs, screen) => {
     bigShip.render(screen);
   } else {
     
-    if (data.bigShip.isAutopilot === false) {
+    if (data.bigShip.isChangedCourse === false) {
       data.bigShip.autopilot(screen);
     }
     data.bigShip.moveShip(data.bigShip.targetX, data.bigShip.targetY);

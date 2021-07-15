@@ -1,7 +1,7 @@
 import gameover from '../../bg/gameover-min.jpg';
 import loading from '../../bg/loading-min.jpg';
 import mainmenu from '../../bg/mainmenu-min.jpg';
-import space from '../../bg/space.jpg';
+import space from '../../bg/black.svg';
 import astero from '../../img/asteroid1.png';
 import astero2 from '../../img/asteroid2.png';
 import astero3 from '../../img/asteroid3.png';
@@ -18,6 +18,17 @@ import shot from '../../img/shot.png';
 import explode from '../../img/explode.png';
 import astero8 from '../../img/astero8.png';
 import hit from '../../img/hit.png';
+import star1 from '../../img/star1.png';
+import star2 from '../../img/star2.png';
+import star3 from '../../img/star3.png';
+import star4 from '../../img/star4.png';
+import star5 from '../../img/star5.png';
+import planet1 from '../../img/planet1.png';
+import planet2 from '../../img/planet2.png';
+import planet3 from '../../img/planet3.png';
+import planet4 from '../../img/planet4.png';
+import planet5 from '../../img/planet5.png';
+import enemy from '../../img/enemy.png';
 
 const images = {
   astero,
@@ -39,7 +50,18 @@ const images = {
   shot,
   explode,
   astero8,
-  hit
+  hit,
+  star1,
+  star2,
+  star3,
+  star4,
+  star5,
+  planet1,
+  planet2,
+  planet3,
+  planet4,
+  planet5,
+  enemy,
 };
 
 const imageLoader = async () => {

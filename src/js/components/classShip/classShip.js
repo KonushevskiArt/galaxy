@@ -6,11 +6,14 @@ class classShip extends classSpaceElem{
   }
 
   autopilot = (screen) => {
-    this.isAutopilot = true;
+
+    this.isChangedCourse = true;
     this.targetX = Math.floor(Math.random() * screen.width);
-    this.targetY = screen.height * 0.75 + (Math.floor(Math.random() * screen.height * 0.2))
+    this.targetY = screen.height * this.flightRestrictions +
+                   (Math.floor(Math.random() * screen.height * this.flightSpace))
+
     setTimeout((function() {
-      this.isAutopilot = false}).bind(this), 5000); 
+      this.isChangedCourse = false}).bind(this), 5000); 
   } 
   
   checkHit = (pests, data) => {
@@ -37,7 +40,10 @@ class classShip extends classSpaceElem{
       if (!isRestHelth) {
         this.y += 20;
       } else {
-        data.isGameOver = true;
+        if (!(this === data.enemyShip)) {
+          data.isGameOver = true;
+        }
+        
       }
     }
      

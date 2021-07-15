@@ -12,9 +12,11 @@ class BigShip extends classShip{
     this.helth = 1000;
     this.img = imgs.bigspaceship;
     this.isRotate = false;
-    this.isAutopilot = false;
+    this.isChangedCourse = false;
     this.imgFire = imgs.fireMin;
     this.isFire = true;
+    this.flightRestrictions = 0.75
+    this.flightSpace = 0.2
     // this.power = this.height / 5;
     // this.ammo = 100;
   }
