@@ -78,6 +78,9 @@ module.exports = {
   },
   devtool: isDev ? 'source-map' : false,
   devServer: {
+    // static: {
+    //   directory: path.join(__dirname, 'dist'),
+    // },
     port: 3000,
     hot: isDev,
   },

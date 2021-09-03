@@ -4,15 +4,15 @@ import './scss/index.scss';
 
 import {Game} from './js/game';
 
-// window.addEventListener('load', async () => {
-//   try {
-//     if (navigator.serviceWorker) {
-//       await navigator.serviceWorker.register('./sw.js');
-//     }
-//   } catch (error) {
-//     console.log('Service worker register fail');
-//   }
-// });
+window.addEventListener('load', async () => {
+  try {
+    if (navigator.serviceWorker) {
+      await navigator.serviceWorker.register('./sw.js');
+    }
+  } catch (error) {
+    console.log('Service worker register fail');
+  }
+});
 
 const game = new Game('.app');
 

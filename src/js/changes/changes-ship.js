@@ -11,7 +11,7 @@ const changesShip = (data, imgs, screen) => {
     data.ship = ship;
     data.bigShip = bigShip;
     
-    data.ship.moveShip(screen.mouseX, screen.mouseY);
+    // data.ship.moveShip(screen.mouseX, screen.mouseY, screen.pressedKeys);
     ship.render(screen);
     bigShip.render(screen);
   } else {
@@ -20,7 +20,7 @@ const changesShip = (data, imgs, screen) => {
       data.bigShip.autopilot(screen);
     }
     data.bigShip.moveShip(data.bigShip.targetX, data.bigShip.targetY);
-    data.ship.moveShip(screen.mouseX, screen.mouseY);
+    data.ship.manageShip(screen.pressedKeys, screen.width, screen.height);
 
     data.ship.checkHit(data.asteros, data, screen);
     data.bigShip.checkHit(data.asteros, data, screen);

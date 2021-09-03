@@ -50,7 +50,12 @@ body {
   transition: color 0.3s;
 }
 
-.list button:hover, .gameover button:hover, .start:hover {
+.list button:hover,
+.gameover button:hover,
+.start:hover,
+.list button:focus,
+.gameover button:focus,
+.start:focus  {
   color: brown;
 }
 .loading {
@@ -121,7 +126,9 @@ body {
      
 
 .modal {
-  overflow: auto;
+  min-height: 50vh;
+  max-height: 70vh;
+  
   padding: 30px;
   width: 80%;
   display: none;
@@ -155,10 +162,16 @@ body {
 }
 
 .modal-content {
+  height: 400px;
+  width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  overflow: auto;
+}
+.start-game .modal-content {
+  justify-content: center;
 }
 .modal.active {
   display: flex;
@@ -208,4 +221,21 @@ body {
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: 45px;
+  }
+  .list button{
+    font-size: 20px;
+  }
+  .modal-title {
+    font-size: 25px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  .modal-content .name {
+    width: 190px;
+  }
 }

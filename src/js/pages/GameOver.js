@@ -1,4 +1,4 @@
-const GameOver = (data, restart, bg, audioGameOver) => {
+const GameOver = (data, restartFunc, bg, audioGameOver) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('gameover');
   wrapper.style.backgroundImage = `url(${bg.src})`;
@@ -13,8 +13,20 @@ const GameOver = (data, restart, bg, audioGameOver) => {
     <span class="score">Your scrore: ${data.score}</span>
     <button class="restart">restart</button>
   `
-  wrapper.querySelector('.restart').onclick = restart;
-  wrapper.appendChild(audio)
+  wrapper.querySelector('.restart').onclick = restartFunc;
+  
+  wrapper.querySelector('.restart').tabIndex = 0;
+  ////////
+  const onclick = (e) => {
+    if (e.keyCode === 13) {
+      //////////
+      wrapper.querySelector('.restart').focus();
+      window.removeEventListener('click', onclick)
+    }  
+  } 
+  window.addEventListener('keydown', onclick);
+
+  wrapper.appendChild(audio);
   return wrapper;
 } 
 export {GameOver};

@@ -10,6 +10,8 @@ const changesSpace = (data, imgs, screen) => {
     data.space.render(screen);
     
   } else {
+    data.space.width = screen.width;
+    data.space.height = screen.height
     data.space.render(screen);
   }
     

@@ -29,6 +29,9 @@ class Game {
     this.container.innerHTML = '';
     this.container.appendChild(Canvas(this.loadedAudio, this.data));
     this.screen = new Screen();
+    window.onresize = () => {
+      this.screen.canvasResize()
+    };
     
     this.gameTimeId = setInterval(() => {
       this.data.gameTime += 1;

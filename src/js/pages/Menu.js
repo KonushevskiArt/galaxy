@@ -1,8 +1,45 @@
+let isShowModal = false;
+let focusedLink = null; 
+
 const showModal = (containerEl, modalSelector) => {
   const modal = containerEl.querySelector(modalSelector);
   const close = modal.querySelector('.close');
+  isShowModal = true;
 
-  close.onclick = () => modal.classList.remove('active');
+
+  if (modalSelector === '.start-game') {
+    modal.querySelector('.name').focus();
+  }
+
+  if (modalSelector === '.description' || modalSelector === '.listPlayers') {
+    modal.querySelector('.modal-content').tabIndex = 0;
+    modal.querySelector('.modal-content').focus();
+    modal.querySelector('.modal-content').click();
+  }
+ 
+  
+  
+  const checkKey = (e) => {
+    if (e.keyCode === 27) {
+      modal.classList.remove('active');
+      isShowModal = false;
+      window.removeEventListener('keydown', checkKey)
+    } else if (modalSelector === '.start-game' && e.keyCode === 13) {
+      const input = modal.querySelector('.name');
+      if (input.value.length > 3) {
+        modal.querySelector('.start').focus();
+        isShowModal = false;
+      }
+    } 
+  }
+
+  window.addEventListener('keydown', checkKey); 
+
+  close.onclick = () => {
+    modal.classList.remove('active');
+    isShowModal = false;
+  };
+
   modal.classList.add('active');
 }
 
@@ -10,7 +47,7 @@ const Menu = (startGame, bg, menuAudio, data) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('menu')
   wrapper.style.backgroundImage = `url(${bg.src})`;
-
+  
   const audio = document.createElement('audio');
   audio.classList.add('audioMenu')
   audio.loop = true;
@@ -18,12 +55,36 @@ const Menu = (startGame, bg, menuAudio, data) => {
   audio.autoplay = true;
   let listPlayrs;
   
+
+  const changeLinks = (e) => {
+    if (e.keyCode === 38 && !isShowModal) {
+      try {
+        const prevLink = focusedLink.parentElement.previousElementSibling.firstElementChild;
+        if (prevLink) {
+          prevLink.focus();
+          focusedLink = prevLink;
+        }
+      } catch (error) {}
+    }
+    if (e.keyCode === 40 && !isShowModal) {
+      try {
+          const nextLink = focusedLink.parentElement.nextElementSibling.firstElementChild;
+        if (nextLink) {
+          nextLink.focus();
+          focusedLink = nextLink;
+        }
+      } catch (error) {}
+    } 
+  }
+
+  window.onkeyup = changeLinks; 
+  
   try {
-    listPlayrs = data.ListBestPilots.reduce((str, el, index) => {
+    listPlayrs = data.ListBestPilots.reduce((resStr, el, index) => {
       const {name, score} = el;
   
       return (`
-        ${str}
+        ${resStr}
         <li>
           <p>${index+1} ${name}: ${score}</p>
         </li>
@@ -37,7 +98,7 @@ const Menu = (startGame, bg, menuAudio, data) => {
   wrapper.innerHTML = `
     <h1 class="title">Galaxy</h1>
     <ul class="list">
-      <li> <button class="trigger-start">Start game</button> </li>
+      <li> <button class="trigger-start" autofocus>Start game</button> </li>
       <li> <button class="trigger-desription">Game description</button> </li>
       <li> <button class="trigger-bestPlayers">List of the best pilots</button> </li>
     </ul>
@@ -85,6 +146,7 @@ const Menu = (startGame, bg, menuAudio, data) => {
       </div>
     </div>
   `;
+  focusedLink = wrapper.querySelector('.trigger-start');
 
   wrapper.appendChild(audio);
 

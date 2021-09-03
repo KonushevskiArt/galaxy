@@ -15,8 +15,9 @@ class BigShip extends classShip{
     this.isChangedCourse = false;
     this.imgFire = imgs.fireMin;
     this.isFire = true;
-    this.flightRestrictions = 0.75
-    this.flightSpace = 0.2
+    this.flightRestrictions = 0.75;
+    this.flightSpace = 0.2;
+    this.isAutopilot = true;
     // this.power = this.height / 5;
     // this.ammo = 100;
   }

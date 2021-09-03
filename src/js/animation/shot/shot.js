@@ -13,7 +13,7 @@ const partsImg = [
 const shotAnima = (data, screen) => {
   
     const {ship} = data;
-    if (screen.isClick && data.ship.ammo !== 0) {
+    if (screen.isFire && data.ship.ammo !== 0) {
       _isAnima = true;
     }
     

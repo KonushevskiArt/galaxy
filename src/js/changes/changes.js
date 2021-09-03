@@ -4,7 +4,7 @@ import { changesSpace } from "./changes-space";
 import { changesFireball } from "./changes-fireball";
 import { changesStar } from "./changes-star";
 import { changesPlanet } from "./changes-planet";
-import {changesEnemyShip} from "./changes-enemy"; 
+import {changesEnemyShip} from "./changes-enemy"; ///
 
 
 const changes = (data, imgs, screen) => {
@@ -13,12 +13,24 @@ const changes = (data, imgs, screen) => {
   changesStar(data, imgs, screen);
   changesPlanet(data, imgs, screen);
   changesAstero(data, imgs, screen);
+  // console.log(screen.isTouchDevice)
   //in development
   // changesEnemyShip(data, imgs, screen); в разработке
   changesShip(data, imgs, screen);
-
+  if (screen.isTouchDevice) {
+    screen.drawTouchInterface();
+    screen.pressedKeys = {
+      'up': false,
+      'down': false,
+      'left': false,
+      'right': false,
+    };
+  }
   changesFireball(data, imgs, screen);
-  screen.print(screen.width - 150, 50, `Score: ${data.score}`);
+
+  screen.context.textAlign = 'right';
+  screen.print(screen.width - 40, screen.height - 40, `Score: ${data.score}`);
+  screen.context.textAlign = 'left';
 }
 
 export {changes};

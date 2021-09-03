@@ -40,7 +40,7 @@ const checkHit = (fireball, data) => {
 
 const changesFireball = (data, imgs, screen) => {
   
-  if (screen.isClick && data.ship.ammo > 0) {
+  if (screen.isFire && data.ship.ammo > 0) {
     const fireBall = new Fireball(imgs, data.ship.x + (data.ship.width / 2.2), data.ship.y);
     data.ship.ammo -= 1;
 
@@ -53,7 +53,7 @@ const changesFireball = (data, imgs, screen) => {
     data.fireballs.push(fireBall);
     
     fireBall.render(screen);
-    screen.isClick = false;
+    screen.isFire = false;
   }
   screen.isClick = false;
 

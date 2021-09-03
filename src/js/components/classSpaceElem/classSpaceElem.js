@@ -38,6 +38,7 @@ class classSpaceElem {
       return false;
     }
   }
+  
   reduceHelth = (pest) => {
     this.helth = this.helth - pest.power;
     return this.helth > 0 ? false : true;
