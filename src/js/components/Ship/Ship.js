@@ -5,7 +5,7 @@ class Ship extends classShip{
     super(imgs);
     this.x = screen.width / 2;
     this.y = screen.height * 0.8;
-    this.speed = 6;
+    this.speed = 5;
     this.height = this.width = 50;
     this.helth = 100;
     this.img = imgs.spaceship;

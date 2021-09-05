@@ -3,8 +3,8 @@ import { Fireball } from '../components/Fireball/Fireball.js';
 const checkHit = (fireball, data) => {
     
   const indexHitAster = data.asteros.findIndex((aster) => {
-    return (fireball.x <= (aster.x + aster.width) && fireball.x >= aster.x) &&
-           (fireball.y <= (aster.y + aster.height) && fireball.y >= aster.y)
+    return ((fireball.x) <= (aster.x + aster.width) && fireball.x >= aster.x) &&
+           ((fireball.y) <= (aster.y + aster.height) && fireball.y >= aster.y)
   });
   if (indexHitAster !== -1) {
     const indexFireball = data.fireballs.findIndex((el) => el.id === fireball.id );
@@ -41,7 +41,7 @@ const checkHit = (fireball, data) => {
 const changesFireball = (data, imgs, screen) => {
   
   if (screen.isFire && data.ship.ammo > 0) {
-    const fireBall = new Fireball(imgs, data.ship.x + (data.ship.width / 2.2), data.ship.y);
+    const fireBall = new Fireball(imgs, data.ship.x + (data.ship.width / 2 - data.fireballSize / 2), data.ship.y);
     data.ship.ammo -= 1;
 
     if (data.audioBlaster.paused) {
@@ -57,7 +57,7 @@ const changesFireball = (data, imgs, screen) => {
   }
   screen.isClick = false;
 
-  if(data.ship) {
+  if (data.ship) {
     screen.print(40, screen.height - 40, `ammo ${data.ship.ammo}`);
   }
   
@@ -70,8 +70,8 @@ const changesFireball = (data, imgs, screen) => {
       if (fireball.isItemOnScreen(screen)) {
         fireball.render(screen);
       } else {
-        const index = data.fireballs.findIndex((el) => el === fireball);
-        data.fireballs.splice(index, 1);
+        const newArrFireballs  = data.fireballs.filter((el) => el !== fireball);
+        data.fireballs = newArrFireballs;
       }
     })
   }

@@ -6,7 +6,7 @@ import { hitAnim } from '../animation/hit/hit.js';
 const changesAstero = (data, imgs, screen) => {
   const {height, width} = screen;
 
-  if ((data.gameTime % data.timeAppearAsteros === 0 && data.asteros.length < data.currnetCountAsteros)) {
+  if (data.asteros.length < data.currnetCountAsteros) {
     const asteroOne = new Astero(screen.width, imgs);
     data.asteros.push(asteroOne); 
   } 
@@ -17,18 +17,16 @@ const changesAstero = (data, imgs, screen) => {
       aster.y += aster.speedY;
 
       if (aster.isItemOnScreen(screen)) {
-        aster.render(screen);
+        aster.render(screen); 
         explodeAnim(data, screen);
         hitAnim(data, screen);
-      } else {
-        const index = data.asteros.findIndex((astero) => aster === astero);
-        data.asteros.splice(index, 1);
+      } 
+      else {
+        const newArrAsteros = data.asteros.filter((astero) => aster !== astero);
+        data.asteros = newArrAsteros; 
       }
-
     })
-    
   }
-
 }
 
 export {changesAstero};

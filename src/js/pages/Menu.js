@@ -112,7 +112,7 @@ const Menu = (startGame, bg, menuAudio, data) => {
           <li><h4>Game over</h4>
             <p>Your task is to protect the main ship if the health of your ship or main ship drops to 0 end of the game</p></li>
           <li><h4>Ship control</h4>
-            <p>The ship follows the mouse, fire by pressing the left mouse button.
+            <p>the ship moves up by pressing the up arrow, moves down by pressing the down arrow, to the left by pressing the left arrow, to the right by pressing the right arrow, fire by pressing space bar.
               To restore the health of the ship and replenish ammunition, you need to be inside the main ship
             </p>
           </li>

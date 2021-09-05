@@ -10,14 +10,13 @@ class DataGame{
     this.ship = null;
     this.bigShip = null;
     this.gameTime = 0;
-    this.timeLastShot = null;
     this.score = 0;
     this.explodedAster = null;
     this.explodedAsters = [];
     this.hitedAsters = [];
+    this.fireballSize = 10;//?
 
     this.currnetCountAsteros = 3;
-    this.timeAppearAsteros = 3;
 
     this.audioHit;
     this.audioExplode;

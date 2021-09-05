@@ -12,7 +12,7 @@ import spaceship from '../../img/spaceship.png';
 import bigspaceship from '../../img/bigspaceship.png';
 import satelite from '../../img/satelite.png';
 import satelite2 from '../../img/satelite2.png';
-import fireball from '../../img/fireball.svg';
+import fireball from '../../img/fireball.png';
 import fireMin from '../../img/fire.png';
 import shot from '../../img/shot.png';
 import explode from '../../img/explode.png';

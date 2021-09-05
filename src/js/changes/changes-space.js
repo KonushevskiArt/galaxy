@@ -11,7 +11,7 @@ const changesSpace = (data, imgs, screen) => {
     
   } else {
     data.space.width = screen.width;
-    data.space.height = screen.height
+    data.space.height = screen.height;
     data.space.render(screen);
   }
     
