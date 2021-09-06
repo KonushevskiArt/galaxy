@@ -1,5 +1,5 @@
 import { Star } from '../components/Star/Star.js';
-const currentCountStars = 50;
+const currentCountStars = 100;
 
 const changesStar = (data, imgs, screen) => {
   const {height, width} = screen;

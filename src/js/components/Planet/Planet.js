@@ -7,10 +7,10 @@ class Planet extends classSpaceElem {
     super(screen.width);
     this.id = id += 1;
     this.x = Math.floor(Math.random()  * screen.width);
-    this.y = Math.floor(Math.random() * (-screen.height / 2) + (-screen.height / 5));
+    this.y = Math.floor(Math.random() * (-screen.height / 4) );
     this._sign = (Math.random()) > 0.5 ? '+': '-';
-    this.speedY = Math.floor(Math.random() * 5) / 12 + 0.1;
-    this.height = this.width = Math.floor(Math.random() * 100) + 20;
+    this.speedY = Math.ceil(Math.random() * 3) * 0.25;
+    this.height = this.width = Math.floor(Math.random() * 50) + 40;
     this.helth = this.width;
     this.imgs = Object.entries(imgs).filter(([key]) => {
       return key === 'planet1' ||

@@ -1,4 +1,4 @@
-const Canvas = (audios, data) => {
+const Canvas = (audios, data, game) => {
   const wrapper =  document.createElement('div');
   wrapper.classList.add('game-wrapper');
 
@@ -28,6 +28,11 @@ const Canvas = (audios, data) => {
   wrapper.innerHTML = `
     <canvas class="game" width="600" height="600">Элемент не поддерживается</canvas>
   `;
+  window.onkeyup = (e) => {
+    console.log('dsfsdf')
+    console.log(e.keyCode)
+  }
+  //modal ask about live (yes or not ) and stop game loop and return to main menu or continuous game
 
   wrapper.appendChild(audio);
   wrapper.appendChild(audioHit);

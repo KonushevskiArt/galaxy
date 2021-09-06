@@ -1,30 +1,27 @@
 import {createSpriteMap} from '../../utils/createSpriteMap.js';
 
-let _currentPart = 0;
-let _isAnima = true;
 
-const partsImg = createSpriteMap(854, 954, 3, 4).reverse();
+const partsImg = createSpriteMap(254, 284, 3, 4).reverse();
 
 const hitAnim = (data, screen) => {
   
   data.hitedAsters.forEach((el) => {
-    if (el.timer > 0) {
-      el.timer -= 10;
-      if(el.timer <= 0) {
+
+    if (el._hitTimer > 0 && el._hitCurrentPart !== undefined) {
+      el._hitTimer -= 10;
+
+      if (el._hitTimer <= 0) {
         const index = data.hitedAsters.findIndex((item) => item.id === el.id);
         data.hitedAsters.splice(index, 1);
       }
-      screen.context.drawImage(el.imgHit, ...partsImg[_currentPart], (el.x + el.width / 7), (el.y + el.height /1.5), (el.width / 1.5), (el.height / 1.5));
-
-      if(_isAnima) {
-        _isAnima = false;
-        setTimeout(() => {
-          _currentPart = (_currentPart === partsImg.length -1 ? _currentPart = 0 : (_currentPart += 1)); 
-          _isAnima = true;
-        }, 70);
+      screen.context.drawImage(el.imgHit, ...partsImg[el._hitCurrentPart], (el.x + el.width / 7), (el.y + el.height /1.5), (el.width / 1.5), (el.height / 1.5));
+  
+      if(el._hitTimer % 50 === 0) {
+        el._hitCurrentPart = (el._hitCurrentPart === partsImg.length -1 ? el._hitCurrentPart = 0 : (el._hitCurrentPart += 1)); 
       }
     } else {
-      el.timer = 800;
+      el._hitTimer = 600;
+      el._hitCurrentPart = 0;
     }
   })
      

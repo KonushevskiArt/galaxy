@@ -32,7 +32,7 @@ class classSpaceElem {
     const {height, width} = screen;
 
     if (!(this.x >= width + this.width || this.x < -this.width) && 
-    !(this.y >= height + this.height || this.y < -height)) {
+    !(this.y >= height + this.height || this.y < -height / 2)) {
       return true;
     } else {
       return false;

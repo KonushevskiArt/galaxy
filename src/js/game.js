@@ -27,7 +27,7 @@ class Game {
   
   startGame = () => {
     this.container.innerHTML = '';
-    this.container.appendChild(Canvas(this.loadedAudio, this.data));
+    this.container.appendChild(Canvas(this.loadedAudio, this.data, this));///// screen by esc stop gameloop throw flag in data and after reenter start game this req anim(screen) = reqAnimFrame(bla bla)
     this.screen = new Screen();
     window.onresize = () => {
       this.screen.canvasResize()

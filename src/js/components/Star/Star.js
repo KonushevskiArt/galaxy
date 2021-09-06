@@ -9,8 +9,8 @@ class Star extends classSpaceElem {
     this.x = Math.floor(Math.random()  * screen.width);
     this.y = Math.floor(Math.random()* -screen.height);
     this._sign = (Math.random()) > 0.5 ? '+': '-';
-    this.speedY = Math.floor(Math.random() * 5) / 12 + 0.1;
-    this.height = this.width = Math.floor(Math.random() * 10) + 5;
+    this.speedY = Math.ceil(Math.random() * 3) * 0.25;
+    this.height = this.width = Math.floor(Math.random() * 6) + 3;
     this.helth = this.width;
     this.imgs = Object.entries(imgs).filter(([key]) => {
       return key === 'star1' ||

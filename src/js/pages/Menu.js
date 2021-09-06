@@ -95,6 +95,8 @@ const Menu = (startGame, bg, menuAudio, data) => {
     console.log(error)
   }
 
+  //create exit game 
+
   wrapper.innerHTML = `
     <h1 class="title">Galaxy</h1>
     <ul class="list">
