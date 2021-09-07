@@ -10,8 +10,6 @@ const changesShip = (data, imgs, screen) => {
     const bigShip = new BigShip(imgs, screen);
     data.ship = ship;
     data.bigShip = bigShip;
-    
-    // data.ship.moveShip(screen.mouseX, screen.mouseY, screen.pressedKeys);
     ship.render(screen);
     bigShip.render(screen);
   } else {
@@ -22,7 +20,12 @@ const changesShip = (data, imgs, screen) => {
     data.bigShip.moveShip(data.bigShip.targetX, data.bigShip.targetY);
     data.ship.manageShip(screen.pressedKeys, screen.width, screen.height);
 
-    data.ship.checkHit(data.asteros, data, screen);
+    const wasHitOnTheShip = data.ship.checkHit(data.asteros, data, screen);
+
+    if (wasHitOnTheShip && window.navigator.vibrate) {
+      window.navigator.vibrate([100, 50, 100, 50, 100, 50, 100]);
+    }
+
     data.bigShip.checkHit(data.asteros, data, screen);
     data.ship.checkRepeir(data);
 

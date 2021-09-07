@@ -43,10 +43,9 @@ class classShip extends classSpaceElem{
         if (!(this === data.enemyShip)) {
           data.isGameOver = true;
         }
-        
       }
+      return true;
     }
-     
   }
 
   moveShip = (x, y) => {

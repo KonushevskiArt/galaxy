@@ -144,6 +144,7 @@ body {
   animation-duration: .3s;
   
 }
+
 .close {
   position: absolute;
   top: 0;
@@ -158,6 +159,40 @@ body {
   cursor: pointer;
   &:hover {
     color:rgb(243, 135, 135)
+  }
+}
+
+.escModal {
+  width: 280px;
+  padding: 30px;
+  display: none;
+  position: absolute;
+  top: 20vh;
+  left: calc(50% - 140px);
+  background: rgba(70, 130, 180, 0.85);
+  color: rgb(222, 218, 255);
+  border-radius: 10px;
+  animation-duration: .3s;
+  p {
+    font-size: 24px;
+  }
+  .escModal-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    button {
+      padding: 5px 10px;
+      color: rgb(212, 223, 224);
+      font-size: 24px;
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      transition: color 0.3s;
+      &:hover,
+      &:focus {
+        color: brown;
+      }
+    }
   }
 }
 

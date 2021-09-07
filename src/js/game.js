@@ -56,6 +56,7 @@ class Game {
       this.startGame();
     }, 2000);
   }
+  
   gameOver = () => {
     cancelAnimationFrame(this.reqAnim);
     clearInterval(this.gameTimeId);

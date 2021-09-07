@@ -15,10 +15,9 @@ const showModal = (containerEl, modalSelector) => {
     modal.querySelector('.modal-content').tabIndex = 0;
     modal.querySelector('.modal-content').focus();
     modal.querySelector('.modal-content').click();
+    
   }
- 
-  
-  
+   
   const checkKey = (e) => {
     if (e.keyCode === 27) {
       modal.classList.remove('active');
@@ -26,9 +25,14 @@ const showModal = (containerEl, modalSelector) => {
       window.removeEventListener('keydown', checkKey)
     } else if (modalSelector === '.start-game' && e.keyCode === 13) {
       const input = modal.querySelector('.name');
-      if (input.value.length > 3) {
+      if (input.value.length > 2) {
         modal.querySelector('.start').focus();
         isShowModal = false;
+      } else {
+        const inputName = containerEl.querySelector('.name');
+        const spanError = containerEl.querySelector('.error-message');
+        inputName.classList.add('error');
+        spanError.classList.add('active');
       }
     } 
   }
@@ -95,14 +99,13 @@ const Menu = (startGame, bg, menuAudio, data) => {
     console.log(error)
   }
 
-  //create exit game 
-
   wrapper.innerHTML = `
     <h1 class="title">Galaxy</h1>
     <ul class="list">
       <li> <button class="trigger-start" autofocus>Start game</button> </li>
       <li> <button class="trigger-desription">Game description</button> </li>
       <li> <button class="trigger-bestPlayers">List of the best pilots</button> </li>
+      <li> <button class="trigger-fullscreen">Full screen</button> </li>
     </ul>
 
     <div class="modal description">
@@ -114,9 +117,19 @@ const Menu = (startGame, bg, menuAudio, data) => {
           <li><h4>Game over</h4>
             <p>Your task is to protect the main ship if the health of your ship or main ship drops to 0 end of the game</p></li>
           <li><h4>Ship control</h4>
-            <p>the ship moves up by pressing the up arrow, moves down by pressing the down arrow, to the left by pressing the left arrow, to the right by pressing the right arrow, fire by pressing space bar.
+            <p>
               To restore the health of the ship and replenish ammunition, you need to be inside the main ship
             </p>
+          </li>
+          <li>
+          <ul>
+            <li>&#10145;   move right</li>
+            <li>&#11013;   move left</li>
+            <li>&#11014;   move up</li>
+            <li>&#11015;   move down</li>
+            <li><b>space</b> - fire</li>
+            <li><b>esc</b> - to make a break or escape to menu</li>
+          </ul>
           </li>
           <li>
             <h4>Space trash</h4>
@@ -161,9 +174,20 @@ const Menu = (startGame, bg, menuAudio, data) => {
     spanError.classList.remove('active');
     value = value.replace(/[^a-zA-Z0-9а-яёА-ЯЁ]+/g, '');
   }
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
   wrapper.querySelector('.trigger-bestPlayers').onclick = () => showModal(wrapper, '.listPlayers');
   wrapper.querySelector('.trigger-desription').onclick = () => showModal(wrapper, '.description');
   wrapper.querySelector('.trigger-start').onclick = () => showModal(wrapper, '.start-game');
+  // wrapper.querySelector('.trigger-exit').onclick = () => window.close();
+  wrapper.querySelector('.trigger-fullscreen').onclick = () => toggleFullScreen();
 
   wrapper.querySelector('.start').onclick = () => {
     if (inputName.value.length > 2) {

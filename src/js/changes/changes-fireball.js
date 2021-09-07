@@ -45,9 +45,16 @@ const changesFireball = (data, imgs, screen) => {
     data.ship.ammo -= 1;
 
     if (data.audioBlaster.paused) {
+      // data.audioBlaster.pause();
       data.audioBlaster.play();
     } else {
       data.audioBlaster.currentTime = 0;
+      // data.audioBlaster.pause();
+      data.audioBlaster.play();
+    }
+
+    if (window.navigator.vibrate) {
+      window.navigator.vibrate(50)
     }
     
     data.fireballs.push(fireBall);
